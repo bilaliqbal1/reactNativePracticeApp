@@ -1,12 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, Button } from 'react-native';
 
 
 export default function App() {
   const [name, setName] = useState("Bilal Iqbal");
   const [email, setEmail] = useState("Bilal@gmail.com");
-  const [arr, setArray] = useState(["car"])
+  const [arr, setArray] = React.useState(["car"])
 
   const arrayHandleClick = () =>{
     // let oldArray = arr;
@@ -46,6 +46,11 @@ export default function App() {
   })
   return (
     <View style={styles.container}>
+      {/* <Image  style={styles.img} source={{uri: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2Fyc3xlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80'}} /> */}
+      <Image  style={styles.img} source={require('./assets/img.jpg')} />
+      <TextInput secureTextEntry={true} keyboardType={'number-pad'} onChangeText={(text)=> console.log(text)} value={"bilal"} style={styles.input} placeholder='Enter value' />
+      <Button style={styles.btn} title={"click me"} onPress={()=>alert("hi")}/>
+      
       <Text>React Native app {name}
       {email}</Text>
       {/* <StatusBar style="auto" /> */}
@@ -58,7 +63,7 @@ export default function App() {
         })}
       </ul>
       <button onClick={arrayHandleClick}>Update</button>
-        <h2>
+        <h2 style={{fontSize: 42, color: 'red'}}>
           {obj.name}
         </h2>
         <h3>{ obj.email}</h3>
@@ -75,5 +80,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  img:{
+    width: 200,
+    height: 200,
+    resizeMode: 'contain',
+  },
+  input:{
+    height: 40,
+    width: '40%',
+    borderColor: 'black',
+    borderWidth: 1,
+  },
+  btn:{
+    width: 200,
+    height: 200,
+    resizeMode: 'contain',
   },
 });
